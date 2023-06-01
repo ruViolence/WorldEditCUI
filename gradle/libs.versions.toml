@@ -8,6 +8,7 @@ fabricLoader = "0.14.21"
 fabricApi = "0.83.0+1.20"
 modmenu = "7.0.1"
 multiconnect = "1.5.10"
+viafabricplus = "2.7.7"
 quiltflower = "1.9.0"
 
 [libraries]
@@ -17,6 +18,7 @@ fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabricLo
 fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabricApi" }
 modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
 multiconnect-api = { module = "net.earthcomputer.multiconnect:multiconnect-api", version.ref = "multiconnect" }
+viafabricplus-api = { module = "de.florianmichael:viafabricplus", version.ref = "viafabricplus" }
 worldedit = { module = "com.sk89q.worldedit:worldedit-fabric-mc1.20", version = "7.2.15" }
 
 # buildtime

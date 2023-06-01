@@ -12,6 +12,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -115,6 +116,9 @@ public final class FabricModWorldEditCUI implements ModInitializer {
                 }
             }
         });
+        if (FabricLoader.getInstance().isModLoaded("viafabricplus")) {
+            ViaFabricPlusHook.enable();
+        }
     }
 
     private void onTick(final Minecraft mc) {

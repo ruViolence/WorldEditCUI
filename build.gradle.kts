@@ -29,6 +29,10 @@ repositories {
         name = "stellardriftSnapshots"
         mavenContent { snapshotsOnly() }
     }
+    maven(url = "https://repo.viaversion.com") {
+        name = "ViaVersion"
+        mavenContent { releasesOnly() }
+    }
 }
 
 quiltflower {
@@ -88,6 +92,9 @@ dependencies {
     modImplementation(libs.fabric.loader)
     modImplementation(libs.modmenu)
     modImplementation(libs.multiconnect.api) {
+        isTransitive = false
+    }
+    modImplementation(libs.viafabricplus.api) {
         isTransitive = false
     }
 
