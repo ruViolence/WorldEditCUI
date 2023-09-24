@@ -22,6 +22,7 @@ repositories {
     // - https://maven.terraformersmc.com/releases/
     // - https://maven.minecraftforge.net/
     // - https://maven.parchmentmc.org/
+    // - https://repo.viaversion.com/
     maven(url = "https://repo.stellardrift.ca/repository/stable/") {
         name = "stellardriftReleases"
         mavenContent { releasesOnly() }
@@ -29,10 +30,6 @@ repositories {
     maven(url = "https://repo.stellardrift.ca/repository/snapshots/") {
         name = "stellardriftSnapshots"
         mavenContent { snapshotsOnly() }
-    }
-    maven(url = "https://repo.viaversion.com") {
-        name = "ViaVersion"
-        mavenContent { releasesOnly() }
     }
 }
 
@@ -95,7 +92,7 @@ dependencies {
     modImplementation(libs.multiconnect.api) {
         isTransitive = false
     }
-    modImplementation(libs.viafabricplus.api) {
+    modCompileOnly(libs.viafabricplus.api) {
         isTransitive = false
     }
 
