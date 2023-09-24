@@ -19,8 +19,8 @@ final class CUINetworking {
     private static final boolean MULTICONNECT_AVAILABLE = FabricLoader.getInstance().isModLoaded("multiconnect");
     private static final boolean VIAFABRICPLUS_AVAILABLE = FabricLoader.getInstance().isModLoaded("viafabricplus");
 
-    private static final String CHANNEL_LEGACY = "WECUI"; // pre-1.13 channel name
-    public static final ResourceLocation CHANNEL_WECUI = new ResourceLocation("worldedit", "cui");
+    static final String CHANNEL_LEGACY = "WECUI"; // pre-1.13 channel name
+    static final ResourceLocation CHANNEL_WECUI = new ResourceLocation("worldedit", "cui");
 
     private CUINetworking() {
     }
