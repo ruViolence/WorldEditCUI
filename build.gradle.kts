@@ -4,16 +4,17 @@ import net.fabricmc.loom.LoomGradleExtension
 
 plugins {
     java
+    alias(libs.plugins.indra.git)
     alias(libs.plugins.loom)
-    alias(libs.plugins.loomQuiltflower)
+    alias(libs.plugins.loomVineflower)
     alias(libs.plugins.versions)
     alias(libs.plugins.javaEcosystemCapabilities)
     alias(libs.plugins.curseForgeGradle)
-    id("org.enginehub.worldeditcui.ghrelease")
+    alias(libs.plugins.publishGithubRelease)
 }
 
 group = "org.enginehub.worldeditcui"
-version = "${libs.versions.minecraft.get()}+02-SNAPSHOT"
+version = "${libs.versions.minecraft.get()}+01-SNAPSHOT"
 
 repositories {
     // mirrors:
@@ -35,8 +36,8 @@ repositories {
     }
 }
 
-quiltflower {
-    quiltflowerVersion = libs.versions.quiltflower.get()
+vineflower {
+    toolVersion = libs.versions.vineflower.get()
     addToRuntimeClasspath = true
     preferences["win"] = 0
 }
@@ -76,7 +77,7 @@ loom {
 // Ugly hack for easy genSourcening
 afterEvaluate {
     tasks.matching { it.name == "genSources" }.configureEach {
-        setDependsOn(setOf("genSourcesWithQuiltflower"))
+        setDependsOn(setOf("genSourcesWithVineflower"))
     }
 }
 
@@ -265,7 +266,9 @@ githubRelease {
     apiToken = providers.gradleProperty("githubToken")
             .orElse(providers.environmentVariable("GITHUB_TOKEN"))
 
-    // tag is inferred from the head tag
+    tagName = project.provider {
+        indraGit.headTag()?.run { org.eclipse.jgit.lib.Repository.shortenRefName(name) }
+    }
     repository = "EngineHub/WorldEditCUI"
     releaseName = "WorldEditCUI v$version"
     releaseBody = project.provider { changelogFile?.let(::file)?.readText(Charsets.UTF_8) }

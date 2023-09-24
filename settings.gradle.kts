@@ -18,7 +18,3 @@ pluginManagement {
         // gradlePluginPortal()
     }
 }
-
-includeBuild("build-logic") {
-    name = "worldeditcui-build-logic"
-}
